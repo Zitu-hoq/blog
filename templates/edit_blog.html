@@ -1,0 +1,40 @@
+{%extends "base.html" %} {% block main %}
+<div id="banner-wrapper">
+  <div id="banner" class="box container">
+    <div class="row">
+      <div class="col-7 col-12-medium">
+        <h2>Hi. This is Bulon.</h2>
+        <p>It's a free responsive blogging website</p>
+      </div>
+      <div class="col-5 col-12-medium">
+        <form action="" method="post">
+          <input
+            type="text"
+            style="margin: 5px"
+            name="title"
+            placeholder="title"
+            value="{{blog.title}}"
+          />
+          <input
+            type="text"
+            name="subtitle"
+            style="margin: 5px"
+            placeholder="subtitle"
+            value="{{blog.subtitle}}"
+          />
+          <textarea
+            type="text"
+            name="description"
+            style="margin-bottom: 16px"
+            placeholder="description"
+            value="{{blog.description}}"
+          ></textarea>
+          <input type="submit" class="button" value="Update Blog" />
+          <input type="reset" class="button alt" value="Clear" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

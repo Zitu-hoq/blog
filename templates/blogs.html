@@ -1,0 +1,51 @@
+{%extends "base.html" %} {% block main %}
+<div style="display: none">{% block blogs %}current{% endblock %}</div>
+<!-- Features -->
+<div id="features-wrapper">
+  <div class="container">
+    <div class="row">
+      {% for item in blogs %}
+      <div class="col-4 col-12-medium">
+        <!-- Box -->
+        <section class="box feature">
+          <a href="/blog/{{item.id}}" class="image featured"
+            ><img
+              src="{{ url_for('static', filename='images/'+item.thumbnail) }}"
+              alt=""
+          /></a>
+          <div class="inner">
+            <header>
+              <h2>{{ item.title }}</h2>
+              <p>{{ item.subtitle }}</p>
+              <a
+                href="{{url_for('delete_blog', blog_id=item.id)}}"
+                style="color: red"
+                >Delete</a
+              >
+              <a
+                href="{{url_for('edit_blog', blog_id=item.id)}}"
+                style="color: blue"
+                >Edit</a
+              >
+            </header>
+            <p>{{ item.description }}</p>
+          </div>
+        </section>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row" style="align-items: center; justify-content: center">
+      <a
+        href="/blogs?page={{ blogs.prev_num}}"
+        class="button marginBtn {% if blogs.has_prev == False %}disabledBtn{% endif %}"
+        >Previous page</a
+      >
+      <a
+        href="/blogs?page={{ blogs.next_num}}"
+        class="button marginBtn {% if blogs.has_next == False %}disabledBtn{% endif %}"
+        >Next page</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}
