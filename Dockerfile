@@ -4,6 +4,6 @@ WORKDIR /app
 COPY . /app
 
 RUN pip install poetry
-RUN poetry install
+RUN poetry install --no-root
 
 CMD ["poetry", "run", "gunicorn", "main:app"]
