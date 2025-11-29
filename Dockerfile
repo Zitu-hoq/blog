@@ -6,6 +6,6 @@ COPY . /app
 COPY README.md /app/README.md
 
 RUN pip install poetry
-RUN poetry install
+RUN poetry install --no-root
 
 CMD ["poetry", "run", "gunicorn", "main:app"]
